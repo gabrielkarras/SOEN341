@@ -7,7 +7,7 @@ Develop a Amazon store web platform.
 
 
 # Team Members
--Gabriel Karras
+- Gabriel Karras
 
 # Technologies
 
