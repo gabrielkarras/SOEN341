@@ -12,7 +12,7 @@ Develop a Amazon store web platform.
 - Maxime Joanisse - MaximeJoanisse
 - Stefan Livadariu - StefanCostinL
 # Technologies
-
+- Django 
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
