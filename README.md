@@ -11,7 +11,7 @@ Develop a Amazon store web platform.
 - Gabriel Karras
 - Victoria Castelli - VCastelli
 - Maxime Joanisse - MaximeJoanisse
-- Mohamed El-Abyad
+- Mohamed El-Abyad - MohamedElAbyad
 - Stefan Livadariu - StefanCostinL
 - Minh Tran Nhat - minhtrannhat
 
