@@ -10,7 +10,7 @@ Develop a Amazon store web platform.
 - Gabriel Karras
 - Victoria Castelli - VCastelli 
 - Maxime Joanisse - MaximeJoanisse
-
+- Stefan Livadariu - StefanCostinL
 # Technologies
 
 
