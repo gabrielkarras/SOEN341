@@ -11,6 +11,7 @@ Develop a Amazon store web platform.
 - Gabriel Karras
 - Victoria Castelli - VCastelli
 - Maxime Joanisse - MaximeJoanisse
+- Mohamed El-Abyad
 - Stefan Livadariu - StefanCostinL
 - Minh Tran Nhat - minhtrannhat
 
@@ -18,5 +19,4 @@ Develop a Amazon store web platform.
 - Django
 
 ## License
-
 [MIT](https://choosealicense.com/licenses/mit/)
