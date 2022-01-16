@@ -1,14 +1,12 @@
 # SOEN341 Winter 2022
 
 # Objective
-
 Develop a Amazon store web platform.
 
 # Project
 
 # Team Members
-
-- Gabriel Karras
+- Gabriel Karras - gabrielkarras
 - Victoria Castelli - VCastelli
 - Maxime Joanisse - MaximeJoanisse
 - Mohamed El-Abyad - MohamedElAbyad
@@ -23,5 +21,6 @@ Develop a Amazon store web platform.
 
 # Language 
 - Python
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
