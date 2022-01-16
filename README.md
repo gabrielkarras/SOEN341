@@ -9,6 +9,7 @@ Develop a Amazon store web platform.
 # Team Members
 - Gabriel Karras
 - Victoria Castelli - VCastelli 
+- Maxime Joanisse - MaximeJoanisse
 
 # Technologies
 
