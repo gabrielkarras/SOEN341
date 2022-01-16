@@ -17,6 +17,11 @@ Develop a Amazon store web platform.
 
 # Technologies
 - Django
+- Bootstrap
+- Unit Testing(TBD)
+- Server(TBD-Github Services)
 
+# Language 
+- Python
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
