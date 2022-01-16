@@ -8,6 +8,7 @@ Develop a Amazon store web platform.
 
 # Team Members
 - Gabriel Karras
+- Victoria Castelli - VCastelli 
 
 # Technologies
 
