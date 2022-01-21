@@ -132,3 +132,4 @@ dmypy.json
 bin/
 pyvenv.cfg
 lib64
+Scripts/

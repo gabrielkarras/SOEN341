@@ -32,7 +32,7 @@ Technology has elicited an evolution in consumer behaviour, leading to an escala
 
 ## Backend
 
-- Make sure you have installed `python3` and `pip`
+- Make sure you have installed `python3` and `pip`, make sure you have added python3 to your SYSTEM PATH if you're on windows 10.
 - Clone this repository
 - Run `pip install -r requirements.txt` to install all python dependencies
 - Run `pre-commit install` to install formatters and linters for python. These tools check your code for errors and other issues.
