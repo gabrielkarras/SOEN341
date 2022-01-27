@@ -42,10 +42,13 @@ The core features of the platform are:
 
 # Setup
 
-- Make sure you have installed `python3` and `pip`. If you're on Widows, make sure you have added python3 to your SYSTEM PATH if you're on windows 10.
-- Clone this repository
-- Run `pip install -r requirements.txt` to install all python dependencies
+- Make sure you have installed `python3` and `pip`. **If you're on Widows, make sure you have added python3 to your SYSTEM PATH, the default python installation on Windows only add the binaries to your USER PATH. Please refer to this StackOverFlow answer on how to add python to you SYSTEM PATH [add-to-path](https://stackoverflow.com/a/65496777). All commands below WILL FAIL if python is not configured in SYSTEM PATH**.
+- Clone this repository.
+- Install poetry from [Poetry-python](https://python-poetry.org/).
+- Go into a python virtual environment by running `poetry shell` inside the project folder. You don't want to clutter your python installation with system-wide packages, you want Django only for this project.
+- Run `poetry install` to install all python dependencies.
 - Run `pre-commit install` to install formatters and linters for python. These tools check your code for errors and other issues.
+- To start the django web server, go into the amazon folder, run `python manage.py runserver`. Go to `127.0.0.1:8080` in your browser to check the status.
 
 # Team Members
 
