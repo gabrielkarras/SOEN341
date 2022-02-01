@@ -11,23 +11,26 @@ Technology has elicited an evolution in consumer behaviour, leading to an escala
 # Core Features
 
 The core features of the platform are:
+
 1. There will be 2 separate entities: Admin and Client/User
 2. Both can Sign-in or Sign-up and require a login page
 3. The Admin can:
-* Add, remove and edit products to their store
-* Add and edit pictures
-* Add and edit prices
-* Add and edit the description of their product
+
+- Add, remove and edit products to their store
+- Add and edit pictures
+- Add and edit prices
+- Add and edit the description of their product
 
 4. The Client can:
-* Browse product by names or categories
-* View the product and read the product details
-* Add, remove and edit a product to a cart
-* Proceed to checkout(dummy payment)
-* See dummy payment method
-* See the sub-total cost, shipping fees and taxes during dummy payment
-* View their order(s) after dummy payment
-* Cancel their order(s) after dummy payment
+
+- Browse product by names or categories
+- View the product and read the product details
+- Add, remove and edit a product to a cart
+- Proceed to checkout(dummy payment)
+- See dummy payment method
+- See the sub-total cost, shipping fees and taxes during dummy payment
+- View their order(s) after dummy payment
+- Cancel their order(s) after dummy payment
 
 # Technologies
 
@@ -49,6 +52,15 @@ The core features of the platform are:
 - Run `poetry install` to install all python dependencies.
 - Run `pre-commit install` to install formatters and linters for python. These tools check your code for errors and other issues.
 - To start the django web server, go into the amazon folder, run `python manage.py runserver`. Go to `127.0.0.1:8080` in your browser to check the status.
+
+## User/Admin Sign-up and Sign-in
+
+- Make sure all python dependencies are installed by running `poetry update`.
+- Run django migrations: `python amazon/manage.py migrate`.
+- Start up the server: `python amazon/manage.py runserver`.
+- To login as Django admin, go to this url in your browser: `127.0.0.1:8000/admin/`. **This is different from store admin**
+- To login as Amazon server admin, go to this url in your browser: `127.0.0.1:8000/accounts/login/`. You may have to create an admin account.
+- To login as a customer, go to this url in your browser: `127.0.0.1:8000/accounts/login/`. You may have to create an user account if you haven't done so.
 
 # Team Members
 
