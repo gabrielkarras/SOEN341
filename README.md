@@ -35,7 +35,8 @@ The core features of the platform are:
 # Technologies
 
 - Django
-- Bootstrap
+- React with Bootstrap
+- Django REST Framework
 - PyTest
 - Server(TBD-Github Services)
 
