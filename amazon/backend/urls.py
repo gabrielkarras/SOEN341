@@ -23,6 +23,7 @@ router.register(r"Clients", views.ClientView, "client")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/", include("allauth.urls")),
+    # path("accounts/", include("allauth.urls")),
     path("api/", include(router.urls)),
+    path("api/users/", include("model_api.urls")),
 ]
