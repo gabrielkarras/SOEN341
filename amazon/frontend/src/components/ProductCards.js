@@ -3,7 +3,7 @@ import "../App.css";
 import Card from "react-bootstrap/Card";
 
 function ProductCards() {
-  return <div></div>;
+  return <fitness />;
 }
 
 export default ProductCards;

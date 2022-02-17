@@ -26,7 +26,7 @@ function Cards() {
               <Card.Body>
                 <Card.Title>
                   {" "}
-                  <Link to="/" className="category-item">
+                  <Link to="/Fitness" className="category-item">
                     {" "}
                     Fitness{" "}
                   </Link>{" "}
@@ -45,7 +45,7 @@ function Cards() {
               <Card.Body>
                 <Card.Title>
                   {" "}
-                  <Link to="/" className="category-item">
+                  <Link to="/Lifestyle" className="category-item">
                     {" "}
                     Lifestyle{" "}
                   </Link>{" "}
@@ -63,7 +63,7 @@ function Cards() {
               <Card.Body>
                 <Card.Title>
                   {" "}
-                  <Link to="/" className="category-item">
+                  <Link to="/Entertainment" className="category-item">
                     {" "}
                     Entertainment{" "}
                   </Link>{" "}
@@ -83,7 +83,7 @@ function Cards() {
               <Card.Body>
                 <Card.Title>
                   {" "}
-                  <Link to="/" className="category-item">
+                  <Link to="/Gaming" className="category-item">
                     {" "}
                     Gaming{" "}
                   </Link>{" "}
@@ -101,7 +101,7 @@ function Cards() {
               <Card.Body>
                 <Card.Title>
                   {" "}
-                  <Link to="/" className="category-item">
+                  <Link to="/Pets_and_Animals" className="category-item">
                     {" "}
                     Pets and Animals{" "}
                   </Link>{" "}
@@ -120,7 +120,7 @@ function Cards() {
               <Card.Body>
                 <Card.Title>
                   {" "}
-                  <Link to="/" className="category-item">
+                  <Link to="/Medical" className="category-item">
                     {" "}
                     Medical{" "}
                   </Link>{" "}
