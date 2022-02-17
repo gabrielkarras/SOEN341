@@ -1,5 +1,5 @@
 # from django.core.validators import MinValueValidator, MaxValueValidator
-from unicodedata import name
+# from unicodedata import name
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.forms import PasswordInput
@@ -24,6 +24,20 @@ class Order(models.Model):
 
     def __str__(self):
         return self.orderID
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    price = models.CharField(max_length=20, null=True, blank=True)
+    body_location = models.CharField(max_length=100, blank=True, null=True)
+    category = models.CharField(max_length=100, blank=True, null=True)
+    _id = models.IntegerField(primary_key=True, editable=False)
+    imageSrc = models.URLField()
+    numInStock = models.IntegerField(null=True, blank=True)
+    companyId = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 # class Products(models.Model):

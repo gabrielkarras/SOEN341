@@ -5,7 +5,7 @@ from .forms import (
     ClientCreationForm,
 )
 from .models import Client
-
+from .models import Product
 from django.contrib.auth.admin import UserAdmin
 
 
@@ -17,3 +17,4 @@ class ClientAdmin(UserAdmin):
 
 
 admin.site.register(Client, ClientAdmin)
+admin.site.register(Product)
