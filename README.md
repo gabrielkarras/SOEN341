@@ -53,6 +53,9 @@ The core features of the platform are:
 - Run `poetry install` to install all python dependencies.
 - Run `pre-commit install` to install formatters and linters for python. These tools check your code for errors and other issues.
 - To start the django web server, go into the amazon folder, run `python manage.py runserver`. Go to `127.0.0.1:8080` in your browser to check the status.
+- - -If products are not loaded in the database, do the following:
+- python manage.py loaddata products.json 
+- Products will be then uploaded to the database.
 
 ## User/Admin Sign-up and Sign-in
 
