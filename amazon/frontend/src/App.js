@@ -1,8 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar.js";
-//import Footer from './components/Footer.js';
-//<Footer />
 import "./App.css";
 import HomePage from "./components/pages/HomePage.js";
 import Products from "./components/pages/Products.js";
@@ -23,17 +21,13 @@ function App() {
         <Routes>
           <Route path="/Lifestyle" exact element={<Lifestyle />} />
           <Route path="/Medical" exact element={<Medical />} />
-          <Route
-            path="/Pets_and_Animals"
-            exact
-            element={<Pets_and_Animals />}
-          />
+          <Route path="/Pets_and_Animals" exact element={<Pets_and_Animals />}/>
           <Route path="/Gaming" exact element={<Gaming />} />
           <Route path="/Entertainment" exact element={<Entertainment />} />
           <Route path="/Fitness" exact element={<Fitness />} />
           <Route path="/" exact element={<HomePage />} />
-          <Route path="/Products.js" element={<Products />} />
-          <Route path="/Products.js/:productID" element={<DetailedProductpage />} />
+          <Route path="/products" exact element={<Products />} />
+          <Route path="/product/:id" element={<DetailedProductpage />} />
         </Routes>
       </Router>
     </>

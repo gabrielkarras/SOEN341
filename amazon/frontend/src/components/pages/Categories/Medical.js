@@ -9,7 +9,7 @@ function Medical() {
     <>
     <div > {ProductDATA.map((value, key) => {
       if(value.category=="Medical"){
-      return <Link to={`/Products.js/${value._id}`}>
+      return <Link to={`/product/${value._id}`}>
         <p >{value.name}</p> </Link>
     }})}</div>
     <Footer />

@@ -8,7 +8,7 @@ function Lifestyle() {
     <>
     <div > {ProductDATA.map((value, key) => {
       if(value.category=="Lifestyle"){
-      return <Link to={`/Products.js/${value._id}`}>
+      return <Link to={`/product/${value._id}`}>
         <p >{value.name}</p> </Link>
     }})}</div>
     <Footer />

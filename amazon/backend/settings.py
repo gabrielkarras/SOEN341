@@ -160,6 +160,6 @@ REST_FRAMEWORK = {
 }
 
 # Port to interact with React
-CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
+CORS_ORIGIN_WHITELIST = ["http://localhost:3000", "http://127.0.0.1:8000" ]
 
 AUTH_USER_MODEL = "model_api.Client"
