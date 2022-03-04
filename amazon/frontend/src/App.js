@@ -14,6 +14,10 @@ import Medical from "./components/pages/Categories/Medical.js";
 import Pets_and_Animals from "./components/pages/Categories/Pets and Animals.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DetailedProductpage from "./components/pages/DetailProductpage/DetailedProductpage.js";
+import ShippingScreen from "./components/pages/ShippingScreen.js"
+import Payments from "./components/pages/Payments.js";
+import Footer from "./components/Footer.js";
+
 
 function App() {
   return (
@@ -34,7 +38,11 @@ function App() {
           <Route path="/" exact element={<HomePage />} />
           <Route path="/Products.js" element={<Products />} />
           <Route path="/Products.js/:productID" element={<DetailedProductpage />} />
+          <Route path="/ShippingScreen.js" element={<ShippingScreen />} />
+          <Route path="/Payments.js" element={<Payments />} />
         </Routes>
+
+        <Footer></Footer>  
       </Router>
     </>
   );
