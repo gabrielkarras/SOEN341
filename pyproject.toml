@@ -23,7 +23,6 @@ virtualenv = "20.13.0"
 django-allauth = "^0.47.0"
 djangorestframework = "^3.13.1"
 django-cors-headers = "^3.11.0"
-django-rest-auth-forked = "^0.9.5"
 
 [tool.poetry.dev-dependencies]
 

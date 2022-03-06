@@ -1,23 +1,42 @@
-# from django.core.validators import MinValueValidator, MaxValueValidator
-# from unicodedata import name
-from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.forms import PasswordInput
-from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
+
+# Feel free to edit the models below
 
 
-class Client(AbstractUser):
-    isStoreOwner = models.BooleanField(default=False)
+class Client(models.Model):
+
+    name = models.CharField(max_length=64)
+    email = models.CharField(max_length=128)
+    # password
+    created = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.email
+        return self.name
 
 
-class Order(models.Model):
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+class StoreOwner(models.Model):
+
+    adminID = models.IntegerField(
+        default=0, validators=[MinValueValidator(0), MaxValueValidator(1000)]
     )
-    orderID = models.CharField(max_length=20, blank=True, null=True)
+    name = models.CharField(max_length=64)
+    email = models.CharField(max_length=128)
+    # password
+    created = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.adminID
+
+
+class Orders(models.Model):
+
+    orderID = models.IntegerField(
+        default=0, validators=[MinValueValidator(0), MaxValueValidator(1000)]
+    )
+    userID = models.IntegerField(
+        default=0, validators=[MinValueValidator(0), MaxValueValidator(1000)]
+    )
     status = models.CharField(max_length=64)
     totalprice = models.DecimalField(max_digits=6, decimal_places=2)
     created = models.BooleanField(default=False)
@@ -26,42 +45,28 @@ class Order(models.Model):
         return self.orderID
 
 
-class Product(models.Model):
-    name = models.CharField(max_length=100, blank=True, null=True)
-    price = models.CharField(max_length=20, null=True, blank=True)
-    body_location = models.CharField(max_length=100, blank=True, null=True)
-    category = models.CharField(max_length=100, blank=True, null=True)
-    _id = models.IntegerField(primary_key=True, editable=False)
-    imageSrc = models.URLField()
-    numInStock = models.IntegerField(null=True, blank=True)
-    companyId = models.CharField(max_length=100, blank=True, null=True)
+class Products(models.Model):
+
+    companyID = models.IntegerField(
+        default=0, validators=[MinValueValidator(0), MaxValueValidator(1000)]
+    )
+    name = models.CharField(max_length=64)
+    category = models.CharField(max_length=64)
+    totalprice = models.DecimalField(max_digits=6, decimal_places=2)
+    stock = models.IntegerField(default=0, validators=[MinValueValidator(0)])
 
     def __str__(self):
-        return self.name
+        return self.companyID
 
 
-# class Products(models.Model):
+class Cart(models.Model):
 
-#     companyID = models.IntegerField(
-#         default=0, validators=[MinValueValidator(0), MaxValueValidator(1000)]
-#     )
-#     name = models.CharField(max_length=64)
-#     category = models.CharField(max_length=64)
-#     totalprice = models.DecimalField(max_digits=6, decimal_places=2)
-#     stock = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    cartID = models.IntegerField(
+        default=0, validators=[MinValueValidator(0), MaxValueValidator(1000)]
+    )
+    # products
+    shippingcost = models.DecimalField(max_digits=6, decimal_places=2)
+    totalprice = models.DecimalField(max_digits=6, decimal_places=2)
 
-#     def __str__(self):
-#         return self.companyID
-
-
-# class Cart(models.Model):
-
-#     cartID = models.IntegerField(
-#         default=0, validators=[MinValueValidator(0), MaxValueValidator(1000)]
-#     )
-#     # products
-#     shippingcost = models.DecimalField(max_digits=6, decimal_places=2)
-#     totalprice = models.DecimalField(max_digits=6, decimal_places=2)
-
-#     def __str__(self):
-#         return self.cartID
+    def __str__(self):
+        return self.cartID
