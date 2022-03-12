@@ -19,7 +19,7 @@ function DetailedProductPage(){
   const navigate = useNavigate() 
   
   useEffect(() => {
-
+    
     dispatch(displayDetailedProduct(params.id))
     
   }, [dispatch, params])
@@ -106,7 +106,8 @@ function DetailedProductPage(){
           </Row>      
           )
       }
-        </div><Footer /></>
+        </div>
+        <Footer /></>
   )
   
 }

@@ -24,7 +24,7 @@ function App() {
           <Route path="/Medical" exact element={<Medical />} />
           <Route path="/Pets_and_Animals" exact element={<Pets_and_Animals />}/>
           <Route path="/Gaming" exact element={<Gaming />} />
-          <Route path="/Entertainment" exact element={<Entertainment />} />
+          <Route path="/:Entertainment" exact element={<Entertainment />} />
           <Route path="/Fitness" exact element={<Fitness />} />
           <Route path="/" exact element={<HomePage />} />
           <Route path="/products" exact element={<Products />} />
