@@ -16,6 +16,21 @@
   font-size: 3rem;
 }
 
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.Show:hover {
+  background-color: #fff;
+  color: white;
+}
+.nobox {
+  
+  box-shadow: none;
+}
 /* .services { */
 /*   background-image: url('/images/img-2.jpg'); */
 /*   background-position: center; */

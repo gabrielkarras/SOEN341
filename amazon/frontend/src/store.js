@@ -3,12 +3,22 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools} from 'redux-devtools-extension'
 import { detailedProductReducer } from "./reducers/detailedProductReducers"
 import { cartReducer } from './reducers/cartReducers'
-import { entertainementProductsReducers } from './reducers/entertainmentProductsReducers'
-
+import { entertainmentProductsReducers } from './reducers/entertainmentProductsReducers'
+import { fitnessProductsReducers } from './reducers/fitnessProductsReducers'
+import { lifestyleProductsReducers } from './reducers/lifestyleProductsReducer'
+import { medicalProductsReducers } from './reducers/medicalProductsReducers'
+import { gamingProductsReducers } from './reducers/gamingProductsReducers'
+import { petsProductsReducers } from './reducers/petsProductsReducers'
 const reducer = combineReducers({
     detailedProduct: detailedProductReducer,
     shoppingCart: cartReducer,
-    entertainmentProducts: entertainementProductsReducers
+    entertainmentProducts: entertainmentProductsReducers,
+    fitnessProducts: fitnessProductsReducers,
+    lifestyleProducts: lifestyleProductsReducers,
+    medicalProducts: medicalProductsReducers,
+    gamingProducts: gamingProductsReducers,
+    petsProducts: petsProductsReducers
+    
 
 })
 

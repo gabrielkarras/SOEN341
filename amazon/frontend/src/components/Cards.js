@@ -101,9 +101,9 @@ function Cards() {
               <Card.Body>
                 <Card.Title>
                   {" "}
-                  <Link to="/Pets_and_Animals" className="category-item">
+                  <Link to="/Pets" className="category-item">
                     {" "}
-                    Pets and Animals{" "}
+                    Pets{" "}
                   </Link>{" "}
                 </Card.Title>
                 <Card.Text>
