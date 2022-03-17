@@ -6,19 +6,20 @@ import Footer from "../../Footer";
 import { Link } from "react-router-dom";
 import Product from '../../Product'
 import { useDispatch, useSelector } from 'react-redux'
-import { displayGamingProducts } from '../../../actions/gamingProductsActions'
+import { displayCategoryProducts } from '../../../actions/categoryActions'
 import Loader from '../../../components/Loader'
 import Message from '../../../components/Message'
+
 function Gaming() {
   const dispatch = useDispatch()
-  const gamingProductsList = useSelector(state => state.gamingProducts)
-  const { load, error, gamingProducts } = gamingProductsList
+  const gamingProductsList = useSelector(state => state.categoryProducts)
+  const { load, error, categoryProducts } = gamingProductsList
 
   const params = useParams()
   
   useEffect(() => {
     
-    dispatch(displayGamingProducts(params.Gaming))
+    dispatch(displayCategoryProducts(params.Gaming))
     
   }, [dispatch, params.Gaming])
 
@@ -31,7 +32,7 @@ function Gaming() {
                     :
                     <div>
                         <Row>
-                            {gamingProducts.map(product => (
+                            {categoryProducts.map(product => (
                                 <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                                     <Product product={product} />
                                 </Col>

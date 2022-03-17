@@ -6,7 +6,7 @@ import Footer from "../../Footer";
 import { Link } from "react-router-dom";
 import Product from '../../Product'
 import { useDispatch, useSelector } from 'react-redux'
-import { displayFitnessProducts } from '../../../actions/fitnessProductsActions'
+import { displayCategoryProducts } from '../../../actions/categoryActions'
 import Loader from '../../../components/Loader'
 import Message from '../../../components/Message'
 
@@ -14,14 +14,14 @@ import Message from '../../../components/Message'
 function Fitness() {
  
   const dispatch = useDispatch()
-  const fitnessProductsList = useSelector(state => state.fitnessProducts)
-  const { load, error, fitnessProducts } = fitnessProductsList
+  const fitnessProductsList = useSelector(state => state.categoryProducts)
+  const { load, error, categoryProducts } = fitnessProductsList
 
   const params = useParams()
   
   useEffect(() => {
     
-    dispatch(displayFitnessProducts(params.Fitness))
+    dispatch(displayCategoryProducts(params.Fitness))
     
   }, [dispatch, params.Fitness])
 
@@ -34,7 +34,7 @@ function Fitness() {
                     :
                     <div>
                         <Row>
-                            {fitnessProducts.map(product => (
+                            {categoryProducts.map(product => (
                                 <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                                     <Product product={product} />
                                 </Col>

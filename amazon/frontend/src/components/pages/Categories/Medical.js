@@ -6,20 +6,20 @@ import Footer from "../../Footer";
 import { Link } from "react-router-dom";
 import Product from '../../Product'
 import { useDispatch, useSelector } from 'react-redux'
-import { displayMedicalProducts } from '../../../actions/medicalProductsAnimals';
+import { displayCategoryProducts } from '../../../actions/categoryActions'
 import Loader from '../../../components/Loader'
 import Message from '../../../components/Message'
 
 function Medical() {
   const dispatch = useDispatch()
-  const medicalProductsList = useSelector(state => state.medicalProducts)
-  const { load, error, medicalProducts } = medicalProductsList
+  const medicalProductsList = useSelector(state => state.categoryProducts)
+  const { load, error, categoryProducts } = medicalProductsList
 
   const params = useParams()
   
   useEffect(() => {
     
-    dispatch(displayMedicalProducts(params.Medical))
+    dispatch(displayCategoryProducts(params.Medical))
     
   }, [dispatch, params.Medical])
 
@@ -32,7 +32,7 @@ function Medical() {
                     :
                     <div>
                         <Row>
-                            {medicalProducts.map(product => (
+                            {categoryProducts.map(product => (
                                 <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                                     <Product product={product} />
                                 </Col>
