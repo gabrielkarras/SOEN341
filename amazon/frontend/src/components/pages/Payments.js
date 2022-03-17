@@ -52,13 +52,12 @@ function Payments({ history }) {
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
 
       <Form onSubmit={submitHandler}>
+        <h1>Accepted Payment Method: Credit Card</h1>
 
-      <h1>Accepted Payment Method: Credit Card</h1>
+        <Form.Group>
+          <Form.Label as="legend">Credit Card Number:</Form.Label>
 
-      <Form.Group>
-        <Form.Label as="legend">Credit Card Number:</Form.Label>
-
-        <Form.Control
+          <Form.Control
             required
             type="text"
             pattern="[0-9]*"
@@ -66,45 +65,45 @@ function Payments({ history }) {
             valie={cc_num ? cc_num : ""}
             onChange={(e) => setCCNum(e.target.value)}
           ></Form.Control>
-      </Form.Group>
+        </Form.Group>
 
-      <Form.Group>
-        <Form.Label as="legend">Name on Credit Card:</Form.Label>
+        <Form.Group>
+          <Form.Label as="legend">Name on Credit Card:</Form.Label>
 
-        <Form.Control
+          <Form.Control
             required
             type="text"
             placeholder="Enter name on credit card"
             valie={cc_name ? cc_name : ""}
             onChange={(e) => setCCName(e.target.value)}
           ></Form.Control>
-      </Form.Group>
+        </Form.Group>
 
-      <Form.Group>
-        <Form.Label as="legend">Date of Expiration:</Form.Label>
+        <Form.Group>
+          <Form.Label as="legend">Date of Expiration:</Form.Label>
 
-        <Form.Control
+          <Form.Control
             required
             type="text"
             placeholder="Enter credit card expiration date"
             valie={cc_date ? cc_date : ""}
             onChange={(e) => setCCDate(e.target.value)}
           ></Form.Control>
-      </Form.Group>
+        </Form.Group>
 
-      <Form.Group>
-        <Form.Label as="legend">Credit Card CVC:</Form.Label>
+        <Form.Group>
+          <Form.Label as="legend">Credit Card CVC:</Form.Label>
 
-        <Form.Control
+          <Form.Control
             required
             type="text"
             placeholder="Enter credit card CVC"
             valie={cc_cvc ? cc_cvc : ""}
             onChange={(e) => setCCcvc(e.target.value)}
           ></Form.Control>
-      </Form.Group>
+        </Form.Group>
 
-      <Button
+        <Button
           type="submit"
           variant="primary"
           id="btttn"
