@@ -2,6 +2,7 @@ import { LIFESTYLE_PRODUCTS_GET, LIFESTYLE_PRODUCTS_SUCCESS, LIFESTYLE_PRODUCTS_
 
 export const lifestyleProductsReducers = (state = { lifestyleProducts: [] }, action) => {
     switch(action.type){
+        
         case LIFESTYLE_PRODUCTS_GET:
             return { loading: true, lifestyleProducts: [] }
 
