@@ -19,7 +19,7 @@ function CheckoutSteps({ step1, step2, step3, step4 }) {
 
       <Nav.Item>
         {step2 ? (
-          <LinkContainer to="./components/pages/ShippingScreen.js">
+          <LinkContainer to="/ShippingScreen.js">
             <Nav.Link>Shipping</Nav.Link>
           </LinkContainer>
         ) : (
@@ -40,10 +40,10 @@ function CheckoutSteps({ step1, step2, step3, step4 }) {
       <Nav.Item>
         {step4 ? (
           <LinkContainer to="/PlaceOrder.js">
-            <Nav.Link>Place Order</Nav.Link>
+            <Nav.Link>Order Summary</Nav.Link>
           </LinkContainer>
         ) : (
-          <Nav.Link disabled>Place Order</Nav.Link>
+          <Nav.Link disabled>Order Summary</Nav.Link>
         )}
       </Nav.Item>
     </Nav>
