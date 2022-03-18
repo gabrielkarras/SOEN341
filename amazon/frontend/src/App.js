@@ -13,6 +13,9 @@ import Pets from "./components/pages/Categories/Pets.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DetailedProductpage from "./components/pages/DetailedProductpage/DetailedProductpage.js";
 import CartPage from "./components/pages/CartPage/CartPage.js";
+import ShippingScreen from "./components/pages/ShippingScreen.js";
+import Payments from "./components/pages/Payments.js";
+import Footer from "./components/Footer.js";
 
 function App() {
   return (
@@ -22,7 +25,7 @@ function App() {
         <Routes>
           <Route path="/:Lifestyle" exact element={<Lifestyle />} />
           <Route path="/:Medical" exact element={<Medical />} />
-          <Route path="/:Pets" exact element={<Pets />}/>
+          <Route path="/:Pets" exact element={<Pets />} />
           <Route path="/:Gaming" exact element={<Gaming />} />
           <Route path="/:Entertainment" exact element={<Entertainment />} />
           <Route path="/:Fitness" exact element={<Fitness />} />
@@ -30,9 +33,11 @@ function App() {
           <Route path="/products" exact element={<Products />} />
           <Route path="/product/:id" element={<DetailedProductpage />} />
           <Route path="/cart/:id">
-          <Route path="" element={<CartPage />} />
+            <Route path="" element={<CartPage />} />
           </Route>
         </Routes>
+
+        <Footer></Footer>
       </Router>
     </>
   );
