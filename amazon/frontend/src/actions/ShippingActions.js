@@ -9,7 +9,7 @@ export const saveShippingAddress = (data) => (dispatch) => {
 
     localStorage.setItem('shippingAddrerss', JSON.stringify(data))
 
-    
+
 
 }
 */
