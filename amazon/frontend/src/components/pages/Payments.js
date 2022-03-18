@@ -19,17 +19,17 @@ function Payments({ history }) {
 
     const cart = useSelector(state => state.cart)
 
-    const {shippingAddress } = cart 
+    const {shippingAddress } = cart
     const dispatch = useDispatch()
 
-    
+
 
     if (!shippingAddress.address){
 
         navigate('../ShippingScreen.js', {  })
 
     }
-    
+
     */
   }
 

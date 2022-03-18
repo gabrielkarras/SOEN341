@@ -72,7 +72,7 @@ function ShippingScreen(history) {
           ></Form.Control>
         </Form.Group>
 
-        {/* The form doesn't get submitted when the onClick action is present in the code below because it syas that the form is not connected. 
+        {/* The form doesn't get submitted when the onClick action is present in the code below because it syas that the form is not connected.
             If you remove the onClick action, the form gets submitted successfully.*/}
 
         <Button
