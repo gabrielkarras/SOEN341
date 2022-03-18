@@ -31,7 +31,7 @@ jobs:
       - name: black_python_lint
         uses: psf/black@stable
         with:
-          options: "--check --verbose"
+          options: "--verbose"
       - name: Run Tests
         run: |
           python amazon/manage.py test
