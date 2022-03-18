@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.password_validation import validate_password
 
 from amazon.backend import settings
-from .models import Product, Order, Client
+from amazon.model_api.models import Product, Order, Client
 
 
 class TestKeyStrength(TestCase):
