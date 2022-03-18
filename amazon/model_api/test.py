@@ -2,9 +2,13 @@ from unicodedata import name
 from django.test import TestCase
 from django.db import models
 from django.contrib.auth.password_validation import validate_password
+import os
+import sys
 
-from amazon.backend import settings
-from amazon.model_api.models import Product, Order, Client
+sys.path.append(os.path.realpath(".."))
+
+from backend import settings
+from model_api.models import Product, Order, Client
 
 
 class TestKeyStrength(TestCase):
