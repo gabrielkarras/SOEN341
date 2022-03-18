@@ -7,21 +7,22 @@ import { Link } from "react-router-dom";
 import Product from '../../Product'
 import { useDispatch, useSelector } from 'react-redux'
 import { displayCategoryProducts } from '../../../actions/categoryActions'
-import Loader from '../../../components/Loader'
-import Message from '../../../components/Message'
+import Loader from '../../Loader'
+import Message from '../../Message'
 
-function Lifestyle() {
+function Pets() {
+
   const dispatch = useDispatch()
-  const lifestyleProductsList = useSelector(state => state.categoryProducts)
-  const { load, error, categoryProducts } = lifestyleProductsList
+  const petsProductsList = useSelector(state => state.categoryProducts)
+  const { load, error, categoryProducts } = petsProductsList
 
   const params = useParams()
   
   useEffect(() => {
     
-    dispatch(displayCategoryProducts(params.Lifestyle))
-    
-  }, [dispatch, params.Lifestyle])
+    dispatch(displayCategoryProducts(params.Pets))
+
+  }, [dispatch, params.Pets])
 
   
   return (
@@ -47,4 +48,4 @@ function Lifestyle() {
   )
 }
 
-export default Lifestyle;
+export default Pets;

@@ -18,7 +18,7 @@ class ClientView(viewsets.ModelViewSet):
 # Product View
 @api_view(["GET"])
 def getRoutes(request):
-    routes = ["/api/products/", "/api/products/<id>/"]
+    routes = ["/api/products/", "/api/products/<id>/", "/api/products/<category>/"]
     return Response(routes)
 
 
@@ -33,4 +33,11 @@ def getProducts(request):
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
+    return Response(serializer.data)
+
+
+@api_view(["GET"])
+def getCategoryProducts(request, pk):
+    entertainmentProducts = Product.objects.filter(category=pk)
+    serializer = ProductSerializer(entertainmentProducts, many=True)
     return Response(serializer.data)
