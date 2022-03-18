@@ -48,7 +48,6 @@ function Medical() {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 }

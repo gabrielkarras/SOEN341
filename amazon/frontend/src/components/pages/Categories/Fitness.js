@@ -48,7 +48,6 @@ function Fitness() {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 }

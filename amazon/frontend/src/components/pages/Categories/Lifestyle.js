@@ -48,7 +48,6 @@ function Lifestyle() {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 }

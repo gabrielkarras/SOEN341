@@ -50,7 +50,6 @@ function Entertainment() {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 }

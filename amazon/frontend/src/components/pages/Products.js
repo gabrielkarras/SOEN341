@@ -10,7 +10,6 @@ function Products() {
       <div>
         <Searchbar placeholder="Enter Product Name..." data={Productdata} />
       </div>
-      <Footer />
     </>
   );
 }

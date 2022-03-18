@@ -48,7 +48,6 @@ function Gaming() {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 }
