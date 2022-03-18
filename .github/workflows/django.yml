@@ -34,4 +34,4 @@ jobs:
           options: "--verbose"
       - name: Run Tests
         run: |
-          python amazon/manage.py test
+          python amazon/manage.py test model_api/
