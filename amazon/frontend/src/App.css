@@ -16,7 +16,6 @@
   font-size: 3rem;
 }
 
-
 .center {
   display: block;
   margin-left: auto;
@@ -28,7 +27,6 @@
   color: white;
 }
 .nobox {
-  
   box-shadow: none;
 }
 /* .services { */

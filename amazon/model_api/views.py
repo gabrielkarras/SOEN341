@@ -18,7 +18,11 @@ class ClientView(viewsets.ModelViewSet):
 # Product View
 @api_view(["GET"])
 def getRoutes(request):
-    routes = ["/api/products/", "/api/products/<id>/", "/api/products/<category>/"]
+    routes = [
+        "/api/products/",
+        "/api/products/<id>/",
+        "/api/products/<category>/",
+    ]
     return Response(routes)
 
 
