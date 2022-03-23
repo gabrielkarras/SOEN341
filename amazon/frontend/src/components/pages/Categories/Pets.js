@@ -15,19 +15,19 @@ import { Link } from "react-router-dom";
 import Product from "../../Product";
 import { useDispatch, useSelector } from "react-redux";
 import { displayCategoryProducts } from "../../../actions/categoryActions";
-import Loader from "../../../components/Loader";
-import Message from "../../../components/Message";
+import Loader from "../../Loader";
+import Message from "../../Message";
 
-function Medical() {
+function Pets() {
   const dispatch = useDispatch();
-  const medicalProductsList = useSelector((state) => state.categoryProducts);
-  const { load, error, categoryProducts } = medicalProductsList;
+  const petsProductsList = useSelector((state) => state.categoryProducts);
+  const { load, error, categoryProducts } = petsProductsList;
 
   const params = useParams();
 
   useEffect(() => {
-    dispatch(displayCategoryProducts(params.Medical));
-  }, [dispatch, params.Medical]);
+    dispatch(displayCategoryProducts(params.Pets));
+  }, [dispatch, params.Pets]);
 
   return (
     <>
@@ -52,4 +52,4 @@ function Medical() {
   );
 }
 
-export default Medical;
+export default Pets;

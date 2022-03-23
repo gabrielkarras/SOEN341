@@ -46,6 +46,8 @@ The core features of the platform are:
 
 # Setup
 
+## Development Environment Setup
+
 - Make sure you have installed `python3` and `pip`. **If you're on Widows, make sure you have added python3 to your SYSTEM PATH, the default python installation on Windows only add the binaries to your USER PATH. Please refer to this StackOverFlow answer on how to add python to you SYSTEM PATH [add-to-path](https://stackoverflow.com/a/65496777). All commands below WILL FAIL if python is not configured in SYSTEM PATH**.
 - Clone this repository.
 - Install poetry from [Poetry-python](https://python-poetry.org/).
@@ -54,7 +56,15 @@ The core features of the platform are:
 - Run `pre-commit install` to install formatters and linters for python. These tools check your code for errors and other issues.
 - To start the django web server, go into the amazon folder, run `python manage.py runserver`. Go to `127.0.0.1:8080` in your browser to check the status.
 
-## User/Admin Sign-up and Sign-in
+## Database setup
+
+Run these commands:
+
+- Make the migrations and migrate them: `python manage.py makemigrations model_api`, `python manage.py migrate model_api`, `python manage.py makemigrations`, `python manage.py migrate`.
+
+- Populate the database with products: `python manage.py loaddata products.json`.
+
+## User/Admin Sign-up and Sign-in Setup
 
 - Make sure all python dependencies are installed by running `poetry update`.
 - Run django migrations: `python amazon/manage.py migrate`.
