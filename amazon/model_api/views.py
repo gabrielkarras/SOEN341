@@ -1,6 +1,8 @@
+from django.contrib.auth.models import User
 from rest_framework import viewsets
 from .models import Client
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from .models import Product
 from .serializers import (
@@ -29,9 +31,18 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 
 @api_view(["GET"])
+@permission_classes([IsAuthenticated])
 def getClientProfile(request):
     user = request.user
     serializer = ClientSerializer(user, many=False)
+    return Response(serializer.data)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated, IsAdminUser])
+def getClients(request):
+    clients = Client.objects.all()
+    serializer = ClientSerializer(clients, many=True)
     return Response(serializer.data)
 
 

@@ -29,6 +29,7 @@ urlpatterns = [
         views.MyTokenObtainPairView.as_view(),
         name="token_obtain_pair",
     ),
-    path("api/users/profile/", views.getClientProfile, name="users-profile"),
+    path("api/users/", views.getClients, name="Clients"),
+    path("api/users/profile/", views.getClientProfile, name="client-profile"),
     path("api/", include("model_api.urls")),
 ]
