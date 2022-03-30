@@ -23,12 +23,12 @@ router.register(r"Clients", views.ClientView, "client")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/users/", include("model_api.urls")),
     path(
         "api/users/login/",
         views.MyTokenObtainPairView.as_view(),
         name="token_obtain_pair",
     ),
+    path("api/users/register/", views.registerClient, name="Register Client"),
     path("api/users/", views.getClients, name="Clients"),
     path("api/users/profile/", views.getClientProfile, name="client-profile"),
     path("api/", include("model_api.urls")),

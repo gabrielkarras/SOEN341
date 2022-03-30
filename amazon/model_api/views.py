@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from rest_framework import viewsets
 from .models import Client
 from rest_framework.decorators import api_view, permission_classes
@@ -12,11 +11,25 @@ from .serializers import (
 )
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+from django.contrib.auth.hashers import make_password
 
 
 class ClientView(viewsets.ModelViewSet):
     serializer_class = ClientSerializer
     queryset = Client.objects.all()
+
+
+@api_view(["POST"])
+def registerClient(request):
+    data = request.data
+    client = Client.objects.create(
+        first_name=data["name"],
+        username=data["email"],
+        email=data["email"],
+        password=make_password(data["password"]),
+    )
+    serializers = ClientSerializerWithToken(client, many=False)
+    return Response(serializers.data)
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -39,7 +52,7 @@ def getClientProfile(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated, IsAdminUser])
+@permission_classes([IsAdminUser])
 def getClients(request):
     clients = Client.objects.all()
     serializer = ClientSerializer(clients, many=True)
