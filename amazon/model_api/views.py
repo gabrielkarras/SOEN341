@@ -1,10 +1,13 @@
 from rest_framework import viewsets
-from .serializers import ClientSerializer
 from .models import Client
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Product
-from .serializers import ProductSerializer
+from .serializers import (
+    ProductSerializer,
+    ClientSerializer,
+    ClientSerializerWithToken,
+)
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
@@ -17,9 +20,10 @@ class ClientView(viewsets.ModelViewSet):
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
+        serializer = ClientSerializerWithToken(self.user).data
 
-        data["username"] = self.user.username
-        data["email"] = self.user.email
+        for k, v in serializer.items():
+            data[k] = v
 
         return data
 
