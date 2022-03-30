@@ -1,19 +1,38 @@
-from django.forms import ClearableFileInput
-from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import ClientSerializer
 from .models import Client
-from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Product
 from .serializers import ProductSerializer
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 class ClientView(viewsets.ModelViewSet):
     serializer_class = ClientSerializer
     queryset = Client.objects.all()
 
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+
+        data["username"] = self.user.username
+        data["email"] = self.user.email
+
+        return data
+
+
+@api_view(["GET"])
+def getClientProfile(request):
+    user = request.user
+    serializer = ClientSerializer(user, many=False)
+    return Response(serializer.data)
+
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
 
 @api_view(["GET"])

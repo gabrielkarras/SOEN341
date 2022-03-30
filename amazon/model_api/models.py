@@ -1,8 +1,5 @@
-# from django.core.validators import MinValueValidator, MaxValueValidator
-# from unicodedata import name
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.forms import PasswordInput
 from django.conf import settings
 
 

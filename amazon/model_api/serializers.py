@@ -5,7 +5,7 @@ from .models import Client, Product
 class ClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Client
-        fields = ("email", "isStoreOwner", "last_login", "date_joined")
+        fields = ("id", "email", "username")
 
 
 class ProductSerializer(serializers.ModelSerializer):
