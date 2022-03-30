@@ -1,14 +1,20 @@
-from unicodedata import name
-from django.test import TestCase
-from django.db import models
-from django.contrib.auth.password_validation import validate_password
 import os
 import sys
 
+from backend import settings
+from django.contrib.auth import get_user_model
+from django.contrib.auth.password_validation import validate_password
+from django.test import TestCase
+from django.urls import reverse
+from rest_framework.authtoken.models import Token
+from rest_framework.test import APITestCase
+
+from model_api.models import Client, Order, Product
+from model_api.serializers import ClientSerializer, ProductSerializer
+
 sys.path.append(os.path.realpath(".."))
 
-from backend import settings
-from model_api.models import Product, Order, Client
+User = get_user_model()
 
 
 class TestKeyStrength(TestCase):
@@ -35,8 +41,39 @@ class TestClientModel(TestCase):
         self.client.login(username="testClient", password="secret")
 
 
-# Must relate to Client
-# class TestOrderModel(TestCase):
+class UserTestCase(TestCase):
+    def setUp(self):
+        self.user_a = User.objects.create_user("cfe", password="abc123")
+
+    def test_user_password(self):
+        checked = self.user_a.check_password("abc123")
+        self.assertTrue(checked)
+
+
+class TestOrderModel(TestCase):
+    def setUp(self):
+        self.user_a = User.objects.create_user("cfe", password="abc123")
+        self.order_a = Order.objects.create(
+            user=self.user_a,
+            orderID="001",
+            status="test_status",
+            totalprice=100.00,
+            created=True,
+        )
+
+    def test_user_count(self):
+        qs = User.objects.all()
+        self.assertEqual(qs.count(), 1)
+
+    def test_user_order_reverse_count(self):
+        user = self.user_a
+        qs = user.order_set.all()
+        self.assertEqual(qs.count(), 1)
+
+    def test_user_order_forward_count(self):
+        user = self.user_a
+        qs = Order.objects.filter(user=user)
+        self.assertEqual(qs.count(), 1)
 
 
 class TestProductModel(TestCase):
