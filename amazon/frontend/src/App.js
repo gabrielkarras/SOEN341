@@ -32,8 +32,8 @@ function App() {
           <Route path="/" exact element={<HomePage />} />
           <Route path="/products" exact element={<Products />} />
           <Route path="/product/:id" element={<DetailedProductpage />} />
-          <Route path="/ShippingScreen.js" element={<ShippingScreen />} />
-          <Route path="/Payments.js" element={<Payments />} />
+          <Route path="/shipping" element={<ShippingScreen />} />
+          <Route path="/payment" element={<Payments />} />
           <Route path="/cart/:id">
             <Route path="" element={<CartPage />} />
           </Route>

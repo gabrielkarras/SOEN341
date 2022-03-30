@@ -15,7 +15,7 @@ class ClientView(viewsets.ModelViewSet):
     queryset = Client.objects.all()
 
 
-# Product View
+
 @api_view(["GET"])
 def getRoutes(request):
     routes = [
