@@ -92,3 +92,34 @@ def getCategoryProducts(request, pk):
     entertainmentProducts = Product.objects.filter(category=pk)
     serializer = ProductSerializer(entertainmentProducts, many=True)
     return Response(serializer.data)
+
+@api_view(["POST"])
+#@permission_classes([IsAuthenticated])
+def addOrderProducts(request):
+    #client = request.client
+    data = request.data
+    orderedProducts = data['orderItems']
+
+    order = Order.objects.create(
+        #client=client,
+        shippingAddress = data['shippingAddress']['address'] +data['shippingAddress']['city'] + data['shippingAddress']['postalCode'] + data['shippingAddress']['country'],
+        paymentMethod = data['paymentMethod'],
+        totalPrice = data['totalPrice'],
+        )
+
+    for i in orderedProducts:
+        product = Product.objects.get(_id=i['product'])
+
+        item = OrderedProduct.objects.create(
+            product = product,
+            order=order,
+            name=product.name,
+            qty=i['qty'],
+            price=i['price'],
+            )
+
+        product.countInStock =  product.countInStock - item.qty
+        product.save()
+
+    serializer = OrderSerializer(order, many=False)
+    return Response(serializer.data)

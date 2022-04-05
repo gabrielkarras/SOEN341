@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Client, Product
+from .models import Client, Product, Order, OrderedProduct
 
 
 class ClientSerializer(serializers.ModelSerializer):
@@ -38,3 +38,27 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = "__all__"
+
+class OrderedProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderedProduct
+        fields = '__all__'
+
+class OrderSerializer(serializers.ModelSerializer):
+    Client = serializers.SerializerMethodField(read_only=True)
+    orderedProduct = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = Order
+        fields = '__all__'
+
+    def get_orderProducts(self,obj):
+        items = obj.orderproduct_set.all()
+        serializer = OrderedProductSerializer(items,many=True)
+        return serializer.data
+
+    def get_Client(self,obj):
+        items = obj.user
+        serializer = ClientSerializer(items,many=False)
+        return serializer.data
+

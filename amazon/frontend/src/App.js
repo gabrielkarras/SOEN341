@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar.js";
 import "./App.css";
 import HomePage from "./components/pages/HomePage.js";
-import Products from "./components/pages/Products.js";
 import Fitness from "./components/pages/Categories/Fitness.js";
 import Entertainment from "./components/pages/Categories/Entertainment.js";
 import Gaming from "./components/pages/Categories/Gaming.js";
@@ -30,7 +29,6 @@ function App() {
           <Route path="/:Entertainment" exact element={<Entertainment />} />
           <Route path="/:Fitness" exact element={<Fitness />} />
           <Route path="/" exact element={<HomePage />} />
-          <Route path="/products" exact element={<Products />} />
           <Route path="/product/:id" element={<DetailedProductpage />} />
           <Route path="/shipping" element={<ShippingScreen />} />
           <Route path="/payment" element={<Payments />} />

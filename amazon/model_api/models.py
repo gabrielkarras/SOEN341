@@ -9,20 +9,6 @@ class Client(AbstractUser):
     def __str__(self):
         return self.email
 
-
-class Order(models.Model):
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
-    )
-    orderID = models.CharField(max_length=20, blank=True, null=True)
-    status = models.CharField(max_length=64)
-    totalprice = models.DecimalField(max_digits=6, decimal_places=2)
-    created = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.orderID
-
-
 class Product(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     price = models.CharField(max_length=20, null=True, blank=True)
@@ -36,29 +22,24 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+class Order(models.Model):
+    #client = models.ForeignKey(Client,on_delete=models.SET_NULL,null=True)
+    _id =  models.AutoField(primary_key=True,editable=False, default=1)
+    shippingAddress = models.CharField(max_length=200,null=True,blank=True)
+    paymentMethod = models.CharField(max_length=200,null=True,blank=True)
+    totalPrice = models.DecimalField(max_digits=12,decimal_places=2,null=True,blank=True)
+    dateTimeCreated = models.DateTimeField(auto_now_add=True,null=True, blank=True)
 
-# class Products(models.Model):
+    def __str__(self):
+        return str(self.createdAt)
 
-#     companyID = models.IntegerField(
-#         default=0, validators=[MinValueValidator(0), MaxValueValidator(1000)]
-#     )
-#     name = models.CharField(max_length=64)
-#     category = models.CharField(max_length=64)
-#     totalprice = models.DecimalField(max_digits=6, decimal_places=2)
-#     stock = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+class OrderedProduct(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
+    order  = models.ForeignKey(Order,on_delete=models.SET_NULL,null=True)
+    name = models.CharField(max_length=200,null=True,blank=True)
+    qty = models.IntegerField(null=True,blank=True,default=0)
+    price = models.DecimalField(max_digits=12,decimal_places=2,null=True,blank=True)
+    _id =  models.AutoField(primary_key=True,editable=False, default=1)
 
-#     def __str__(self):
-#         return self.companyID
-
-
-# class Cart(models.Model):
-
-#     cartID = models.IntegerField(
-#         default=0, validators=[MinValueValidator(0), MaxValueValidator(1000)]
-#     )
-#     # products
-#     shippingcost = models.DecimalField(max_digits=6, decimal_places=2)
-#     totalprice = models.DecimalField(max_digits=6, decimal_places=2)
-
-#     def __str__(self):
-#         return self.cartID
+    def __str__(self):
+        return self.name
