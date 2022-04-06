@@ -11,6 +11,7 @@ from .serializers import (
 )
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework import status
 from django.contrib.auth.hashers import make_password
 
 
@@ -22,14 +23,20 @@ class ClientView(viewsets.ModelViewSet):
 @api_view(["POST"])
 def registerClient(request):
     data = request.data
-    client = Client.objects.create(
-        first_name=data["name"],
-        username=data["email"],
-        email=data["email"],
-        password=make_password(data["password"]),
-    )
-    serializers = ClientSerializerWithToken(client, many=False)
-    return Response(serializers.data)
+
+    try:
+        client = Client.objects.create(
+            first_name=data["name"],
+            username=data["email"],
+            email=data["email"],
+            password=make_password(data["password"]),
+        )
+        serializers = ClientSerializerWithToken(client, many=False)
+        return Response(serializers.data)
+
+    except:
+        message = {"detail": "User with this email already existed"}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -93,32 +100,36 @@ def getCategoryProducts(request, pk):
     serializer = ProductSerializer(entertainmentProducts, many=True)
     return Response(serializer.data)
 
+
 @api_view(["POST"])
-#@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def addOrderProducts(request):
-    #client = request.client
+    # client = request.client
     data = request.data
-    orderedProducts = data['orderItems']
+    orderedProducts = data["orderItems"]
 
     order = Order.objects.create(
-        #client=client,
-        shippingAddress = data['shippingAddress']['address'] +data['shippingAddress']['city'] + data['shippingAddress']['postalCode'] + data['shippingAddress']['country'],
-        paymentMethod = data['paymentMethod'],
-        totalPrice = data['totalPrice'],
-        )
+        # client=client,
+        shippingAddress=data["shippingAddress"]["address"]
+        + data["shippingAddress"]["city"]
+        + data["shippingAddress"]["postalCode"]
+        + data["shippingAddress"]["country"],
+        paymentMethod=data["paymentMethod"],
+        totalPrice=data["totalPrice"],
+    )
 
     for i in orderedProducts:
-        product = Product.objects.get(_id=i['product'])
+        product = Product.objects.get(_id=i["product"])
 
         item = OrderedProduct.objects.create(
-            product = product,
+            product=product,
             order=order,
             name=product.name,
-            qty=i['qty'],
-            price=i['price'],
-            )
+            qty=i["qty"],
+            price=i["price"],
+        )
 
-        product.countInStock =  product.countInStock - item.qty
+        product.countInStock = product.countInStock - item.qty
         product.save()
 
     serializer = OrderSerializer(order, many=False)
