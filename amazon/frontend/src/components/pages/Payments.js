@@ -40,7 +40,19 @@ function Payments() {
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
 
       <Form onSubmit={submitHandler}>
-        <h1>Accepted Payment Method: Credit Card</h1>
+        
+        <Form.Group>
+
+          <Form.Label as="legend">Credit Card Type:</Form.Label>
+          <Form.Control>
+            <div>
+      4        <input type="radio" value="Visa" name="visa" /> Visa
+      5        <input type="radio" value="MasterCard" name="mastercard" /> MasterCard
+      7      </div>
+          </Form.Control>
+        </Form.Group>
+
+
 
         <Form.Group>
           <Form.Label as="legend">Credit Card Number:</Form.Label>
