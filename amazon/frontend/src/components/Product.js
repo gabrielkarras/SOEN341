@@ -12,7 +12,7 @@ function Product({ product }) {
   return (
     <Card className="Show">
       <Link to={`/product/${product._id}`} style={linkStyle}>
-        <img src={product.imageSrc} alt="new" class="center" />
+        <img src={product.imageSrc} alt="new" class="centerpic" />
         <Card.Title as="div" class="nobox">
           <strong>{product.name}</strong>
         </Card.Title>
