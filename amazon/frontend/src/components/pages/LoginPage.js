@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import FormContainer from "../components/FormContainer";
-import { login } from "../actions/userActions";
+import Loader from "../Loader";
+import Message from "../Message";
+import FormContainer from "../FormContainer";
+import { login } from "../../actions/userActions";
 
-function LoginScreen({ location, history }) {
+function LoginPage({ location }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate()
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -20,9 +20,9 @@ function LoginScreen({ location, history }) {
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect);
+      navigate(redirect);
     }
-  }, [history, userInfo, redirect]);
+  }, [userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -72,4 +72,4 @@ function LoginScreen({ location, history }) {
   );
 }
 
-export default LoginScreen;
+export default LoginPage;
