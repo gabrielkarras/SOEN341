@@ -45,20 +45,20 @@ class OrderedProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
-    Client = serializers.SerializerMethodField(read_only=True)
-    orderedProduct = serializers.SerializerMethodField(read_only=True)
+    #Client = serializers.SerializerMethodField(read_only=True)
+    orderedProducts = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Order
         fields = '__all__'
 
-    def get_orderProducts(self,obj):
-        items = obj.orderproduct_set.all()
-        serializer = OrderedProductSerializer(items,many=True)
+    def get_orderedProducts(self, obj):
+        products = obj.orderedproduct_set.all()
+        serializer = OrderedProductSerializer(products, many=True)
         return serializer.data
 
-    def get_Client(self,obj):
-        items = obj.user
-        serializer = ClientSerializer(items,many=False)
-        return serializer.data
+    #def get_Client(self,obj):
+        #items = obj.user
+        #serializer = ClientSerializer(items,many=False)
+        #return serializer.data
 

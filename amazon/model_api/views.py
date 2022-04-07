@@ -4,10 +4,14 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from .models import Product
+from .models import Order
+from .models import OrderedProduct
 from .serializers import (
     ProductSerializer,
     ClientSerializer,
     ClientSerializerWithToken,
+    OrderedProductSerializer,
+    OrderSerializer,
 )
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -117,6 +121,14 @@ def addOrderProducts(request):
         paymentMethod=data["paymentMethod"],
         totalPrice=data["totalPrice"],
     )
+    orderedProducts = data['orderProducts']
+
+    order = Order.objects.create(
+        #client=client,
+        shippingAddress = data['shippingAddress']['address'] + " " + data['shippingAddress']['city'] + " " + data['shippingAddress']['postalCode'] + " " + data['shippingAddress']['country'],
+        paymentMethod = data['paymentMethod'],
+        totalPrice = data['totalPrice'],
+        )
 
     for i in orderedProducts:
         product = Product.objects.get(_id=i["product"])
@@ -129,7 +141,7 @@ def addOrderProducts(request):
             price=i["price"],
         )
 
-        product.countInStock = product.countInStock - item.qty
+        product.numInStock =  product.numInStock - item.qty
         product.save()
 
     serializer = OrderSerializer(order, many=False)

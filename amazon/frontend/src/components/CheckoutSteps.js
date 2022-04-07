@@ -19,7 +19,7 @@ function CheckoutSteps({ step1, step2, step3, step4, step5}) {
 
       <Nav.Item>
         {step2 ? (
-          <LinkContainer to="/Shipping">
+          <LinkContainer to="/shipping">
             <Nav.Link>Shipping</Nav.Link>
           </LinkContainer>
         ) : (
@@ -29,7 +29,7 @@ function CheckoutSteps({ step1, step2, step3, step4, step5}) {
 
       <Nav.Item>
         {step3 ? (
-          <LinkContainer to="/Payment">
+          <LinkContainer to="/payment">
             <Nav.Link>Payment</Nav.Link>
           </LinkContainer>
         ) : (
@@ -39,7 +39,7 @@ function CheckoutSteps({ step1, step2, step3, step4, step5}) {
 
       <Nav.Item>
         {step4 ? (
-          <LinkContainer to="/PlaceOrder.js">
+          <LinkContainer to="/ordersummary">
             <Nav.Link>Order Summary</Nav.Link>
           </LinkContainer>
         ) : (
@@ -49,7 +49,7 @@ function CheckoutSteps({ step1, step2, step3, step4, step5}) {
 
       <Nav.Item>
         {step5 ? (
-          <LinkContainer to="/pages/CartPage/OrderForms.js">
+          <LinkContainer to="/orderconfirmation">
             <Nav.Link>Order Confirmation</Nav.Link>
           </LinkContainer>
         ) : (

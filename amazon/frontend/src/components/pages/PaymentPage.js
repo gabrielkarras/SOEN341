@@ -9,39 +9,38 @@ import {
   Route,
   HashRouter as Router,
 } from "react-router-dom";
-import { savePaymentMethod}  from '../../actions/cartActions'
+import { savePaymentMethod }  from '../../actions/cartActions'
 
-function Payments() {
+function PaymentPage() {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const shoppingCart = useSelector(state => state.shoppingCart)
 
-  const {shippingAddress } = shoppingCart
+  const { shippingAddress } = shoppingCart
+  const [paymentMethod, setPaymentMethod] = useState();
 
   if (!shippingAddress.address){
     navigate('/shipping')
   }
+
   const [cc_num, setCCNum] = useState("");
   const [cc_name, setCCName] = useState("");
   const [cc_date, setCCDate] = useState("");
   const [cc_cvc, setCCcvc] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("");
-
-  
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(savePaymentMethod(paymentMethod))
-    navigate('/placeorder')
+    navigate('/ordersummary')
   };
 
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
+
       <Form onSubmit={submitHandler}>
         
-      <h1>Enter Payment Information:</h1>
       <Form.Group>
           <Form.Label as="legend">Credit Card Type:</Form.Label>
           <div className="radio">
@@ -49,10 +48,12 @@ function Payments() {
           </div>
          
           <div className="radio">
-            <label><input name="cctype" type ="radio" value="MasteCard" onChange={(e) => setPaymentMethod(e.target.value)}></input>MasterCard</label>
+            <label><input name="cctype" type ="radio" value="MasterCard" onChange={(e) => setPaymentMethod(e.target.value)}></input>MasterCard</label>
           </div>
   
       </Form.Group>
+
+
 
         <Form.Group>
           <Form.Label as="legend">Credit Card Number:</Form.Label>
@@ -61,7 +62,6 @@ function Payments() {
             required
             type="text"
             pattern="[0-9]*"
-            maxlength="16"
             placeholder="Enter credit card number"
             value={cc_num ? cc_num : ""}
             onChange={(e) => setCCNum(e.target.value)}
@@ -98,8 +98,6 @@ function Payments() {
           <Form.Control
             required
             type="text"
-            pattern="[0-9]*"
-            maxlength="3"
             placeholder="Enter credit card CVC"
             value={cc_cvc ? cc_cvc : ""}
             onChange={(e) => setCCcvc(e.target.value)}
@@ -118,4 +116,4 @@ function Payments() {
   );
 }
 
-export default Payments;
+export default PaymentPage;

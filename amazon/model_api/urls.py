@@ -13,10 +13,7 @@ urlpatterns = [
     path("users/profile/", views.getClientProfile, name="client-profile"),
     path("products/", views.getProducts, name="products"),
     path("products/<int:pk>/", views.getProduct, name="product"),
-    path(
-        "products/<str:pk>/",
-        views.getCategoryProducts,
-        name="categoryProducts",
-    ),
-    path("order/add", views.addOrderProducts, name="addOrderProducts"),
+    path("products/<str:pk>/", views.getCategoryProducts, name="categoryProducts"),
+    path("order/add/", views.addOrderProducts, name="addOrderProducts",
+    )
 ]

@@ -12,8 +12,9 @@ import Pets from "./components/pages/Categories/Pets.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DetailedProductpage from "./components/pages/DetailedProductpage/DetailedProductpage.js";
 import CartPage from "./components/pages/CartPage/CartPage.js";
-import ShippingScreen from "./components/pages/ShippingScreen.js";
-import Payments from "./components/pages/Payments.js";
+import ShippingPage from "./components/pages/ShippingPage";
+import PaymentPage from "./components/pages/PaymentPage";
+import OrderSummaryPage from "./components/pages/OrderSummaryPage";
 import Footer from "./components/Footer.js";
 
 function App() {
@@ -30,8 +31,9 @@ function App() {
           <Route path="/:Fitness" exact element={<Fitness />} />
           <Route path="/" exact element={<HomePage />} />
           <Route path="/product/:id" element={<DetailedProductpage />} />
-          <Route path="/shipping" element={<ShippingScreen />} />
-          <Route path="/payment" element={<Payments />} />
+          <Route path="/shipping" element={<ShippingPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/ordersummary" element={<OrderSummaryPage />} />
           <Route path="/cart/:id">
             <Route path="" element={<CartPage />} />
           </Route>
