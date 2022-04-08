@@ -1,13 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Row,
-  Col,
-  ListGroup,
-  Button,
-  ListGroupItem,
-} from "react-bootstrap";
+import { Row, Col, ListGroup, Button, ListGroupItem } from "react-bootstrap";
 import "../../App.css";
 import Message from "../Message";
 import CheckoutSteps from "../CheckoutSteps.js";

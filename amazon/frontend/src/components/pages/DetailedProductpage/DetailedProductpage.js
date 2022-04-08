@@ -34,7 +34,7 @@ function DetailedProductPage() {
 
   return (
     <>
-      <div className = "center-page">
+      <div className="center-page">
         {load ? (
           <Loader />
         ) : error ? (

@@ -3,10 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../FormContainer.js";
 import CheckoutSteps from "../CheckoutSteps.js";
-import {
-  useNavigate,
-  HashRouter as Router,
-} from "react-router-dom";
+import { useNavigate, HashRouter as Router } from "react-router-dom";
 import { saveShippingAddress } from "../../actions/cartActions.js";
 
 function ShippingScreen() {
@@ -28,7 +25,7 @@ function ShippingScreen() {
 
   return (
     <FormContainer>
-      <CheckoutSteps step1 ></CheckoutSteps>
+      <CheckoutSteps step1></CheckoutSteps>
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="address">

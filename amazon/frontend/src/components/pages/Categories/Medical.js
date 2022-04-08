@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../../../App.css";
-import {
-  Row,
-  Col,
-  Card,
-} from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { displayCategoryProducts } from "../../../actions/categoryActions";
@@ -13,7 +9,6 @@ import Loader from "../../../components/Loader";
 import Message from "../../../components/Message";
 
 function Medical() {
-  
   const dispatch = useDispatch();
   const medicalProductsList = useSelector((state) => state.categoryProducts);
   const { load, error, categoryProducts } = medicalProductsList;

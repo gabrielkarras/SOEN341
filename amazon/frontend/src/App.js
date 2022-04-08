@@ -39,9 +39,12 @@ function App() {
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/ordersummary" element={<OrderSummaryPage />} />
-          <Route path="/orderconfirmation" element={<OrderConfirmationPage />} />
+          <Route
+            path="/orderconfirmation"
+            element={<OrderConfirmationPage />}
+          />
           <Route path="/cart/:id">
-          <Route path="" element={<CartPage />} />
+            <Route path="" element={<CartPage />} />
           </Route>
         </Routes>
 
