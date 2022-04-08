@@ -4,11 +4,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { detailedProductReducer } from "./reducers/detailedProductReducers";
 import { cartReducers } from "./reducers/cartReducers";
 import { categoryReducers } from "./reducers/categoryReducers";
+import { searchbarReducers } from "./reducers/searchbarReducers";
 
 const reducer = combineReducers({
   detailedProduct: detailedProductReducer,
   shoppingCart: cartReducers,
   categoryProducts: categoryReducers,
+  Searchproduct: searchbarReducers
 });
 
 const shoppingCartStorage = localStorage.getItem("shoppingCart")

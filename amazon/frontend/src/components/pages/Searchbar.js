@@ -30,7 +30,7 @@ function Searchbar({ placeholder, data }) {
           {filteredData.slice(0, 15).map((value, key) => {
             return (
               <Link
-                to={`/Products.js/${value._id}`}
+                to={`/product/${value._id}`}
                 className="dataItem"
                 target="_blank"
               >
