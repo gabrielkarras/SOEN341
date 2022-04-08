@@ -17,7 +17,6 @@ import { displaySearch } from "../../actions/searchAction";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import Searchbar from "./Searchbar";
-import Productdata from "./items.json";
 
 function Products() {
   const dispatch = useDispatch();

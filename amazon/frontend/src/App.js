@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DetailedProductpage from "./components/pages/DetailedProductpage/DetailedProductpage.js";
 import CartPage from "./components/pages/CartPage/CartPage.js";
 import LoginPage from "./components/pages/LoginPage.js";
+import Products from "./components/pages/Products";
 import ShippingPage from "./components/pages/ShippingPage";
 import PaymentPage from "./components/pages/PaymentPage";
 import OrderSummaryPage from "./components/pages/OrderSummaryPage";
