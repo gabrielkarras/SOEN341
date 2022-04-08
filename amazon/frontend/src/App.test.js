@@ -1,9 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import App from "./App";
-import { unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
-import { MemoryRouter } from "react-router-dom";
 
 test("renders Navbar", () => {
   render(<App />);
