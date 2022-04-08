@@ -8,9 +8,9 @@ import {
 export const displayDetailedProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DETAILED_PRODUCT_GET });
-    console.log(id);
+    
     const { data } = await axios.get(`/api/products/${id}`);
-
+    
     dispatch({ type: DETAILED_PRODUCT_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

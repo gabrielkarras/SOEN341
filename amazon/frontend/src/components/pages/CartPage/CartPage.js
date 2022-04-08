@@ -37,7 +37,7 @@ function CartPage() {
   };
 
   const checkoutHandler = () => {
-    navigate(`/login?redirect=checkout`);
+    navigate(`/shipping`);
   };
 
   return (

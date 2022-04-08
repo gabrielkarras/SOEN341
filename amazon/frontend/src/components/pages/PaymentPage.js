@@ -9,33 +9,20 @@ import {
   Route,
   HashRouter as Router,
 } from "react-router-dom";
-//import {savePaymentMethod} from '../actions/cartActions'
+import { savePaymentMethod }  from '../../actions/cartActions'
 
-function Payments({ history }) {
-  {
-    /* ONCE CART IS CREATED AND SHIPPING ADDRESS IS SAVED:
+function PaymentPage() {
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const shoppingCart = useSelector(state => state.shoppingCart)
 
-    const cart = useSelector(state => state.cart)
+  const { shippingAddress } = shoppingCart
+  const [paymentMethod, setPaymentMethod] = useState();
 
-    const {shippingAddress } = cart
-    const dispatch = useDispatch()
-
-
-
-    if (!shippingAddress.address){
-
-        navigate('../ShippingScreen.js', {  })
-
-    }
-
-    */
+  if (!shippingAddress.address){
+    navigate('/shipping')
   }
-
-  const [paymentMethod, setPaymentMethod] = useState("PayPal");
-
-  const navigate = useNavigate();
 
   const [cc_num, setCCNum] = useState("");
   const [cc_name, setCCName] = useState("");
@@ -44,15 +31,29 @@ function Payments({ history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    //dispatchEvent(savePaymentMethod(paymentMethod))
-    //navigate('../PlaceOrder.js', {  })
+    dispatch(savePaymentMethod(paymentMethod))
+    navigate('/ordersummary')
   };
+
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
 
       <Form onSubmit={submitHandler}>
-        <h1>Accepted Payment Method: Credit Card</h1>
+        
+      <Form.Group>
+          <Form.Label as="legend">Credit Card Type:</Form.Label>
+          <div className="radio">
+            <label><input name="cctype" type ="radio" value="Visa" onChange={(e) => setPaymentMethod(e.target.value)} required></input>Visa</label>
+          </div>
+         
+          <div className="radio">
+            <label><input name="cctype" type ="radio" value="MasterCard" onChange={(e) => setPaymentMethod(e.target.value)}></input>MasterCard</label>
+          </div>
+  
+      </Form.Group>
+
+
 
         <Form.Group>
           <Form.Label as="legend">Credit Card Number:</Form.Label>
@@ -62,7 +63,7 @@ function Payments({ history }) {
             type="text"
             pattern="[0-9]*"
             placeholder="Enter credit card number"
-            valie={cc_num ? cc_num : ""}
+            value={cc_num ? cc_num : ""}
             onChange={(e) => setCCNum(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -74,7 +75,7 @@ function Payments({ history }) {
             required
             type="text"
             placeholder="Enter name on credit card"
-            valie={cc_name ? cc_name : ""}
+            value={cc_name ? cc_name : ""}
             onChange={(e) => setCCName(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -86,7 +87,7 @@ function Payments({ history }) {
             required
             type="text"
             placeholder="Enter credit card expiration date"
-            valie={cc_date ? cc_date : ""}
+            value={cc_date ? cc_date : ""}
             onChange={(e) => setCCDate(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -98,7 +99,7 @@ function Payments({ history }) {
             required
             type="text"
             placeholder="Enter credit card CVC"
-            valie={cc_cvc ? cc_cvc : ""}
+            value={cc_cvc ? cc_cvc : ""}
             onChange={(e) => setCCcvc(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -107,7 +108,6 @@ function Payments({ history }) {
           type="submit"
           variant="primary"
           id="btttn"
-          onClick={() => navigate("../OrderSummary.js", {})}
         >
           Continue
         </Button>
@@ -116,4 +116,4 @@ function Payments({ history }) {
   );
 }
 
-export default Payments;
+export default PaymentPage;
