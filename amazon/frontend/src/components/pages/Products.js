@@ -37,10 +37,12 @@ function Products() {
         ) : error ? (
           <Message variant="warning">{error}</Message>
         ) : (
-          
           <div className="center">
             <p className="textcenter"></p>
-            <Searchbar placeholder="Enter Product Name..." data={Searchproduct} />
+            <Searchbar
+              placeholder="Enter Product Name..."
+              data={Searchproduct}
+            />
           </div>
         )}
       </div>

@@ -10,7 +10,7 @@ const reducer = combineReducers({
   detailedProduct: detailedProductReducer,
   shoppingCart: cartReducers,
   categoryProducts: categoryReducers,
-  Searchproduct: searchbarReducers
+  Searchproduct: searchbarReducers,
 });
 
 const shoppingCartStorage = localStorage.getItem("shoppingCart")
