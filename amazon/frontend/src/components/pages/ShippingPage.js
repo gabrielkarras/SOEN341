@@ -12,12 +12,11 @@ import {
 import { saveShippingAddress } from "../../actions/cartActions.js";
 
 function ShippingScreen() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const shoppingCart = useSelector((state) => state.shoppingCart);
+  const { shippingAddress } = shoppingCart;
 
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const shoppingCart = useSelector(state => state.shoppingCart)
-  const { shippingAddress } = shoppingCart 
- 
   const [address, setAddress] = useState(shippingAddress.address);
   const [city, setCity] = useState(shippingAddress.city);
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
@@ -25,7 +24,7 @@ function ShippingScreen() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({address, city, postalCode, country}))
+    dispatch(saveShippingAddress({ address, city, postalCode, country }));
     navigate(`/payment`);
   };
 
@@ -77,11 +76,7 @@ function ShippingScreen() {
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Button
-          type="submit"
-          variant="primary"
-          id="btttn"
-        >
+        <Button type="submit" variant="primary" id="btttn">
           Continue
         </Button>
       </Form>

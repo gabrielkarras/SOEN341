@@ -49,12 +49,12 @@ function Entertainment() {
               {categoryProducts.map((product) => (
                 <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                   <Card className="Show">
-                    <Link to = {`/product/${product._id}`} className = "linkStyle">
-                      <img src = {product.imageSrc} alt="new" class = "center" />
-                      <Card.Title as = "div" class = "nobox">
+                    <Link to={`/product/${product._id}`} className="linkStyle">
+                      <img src={product.imageSrc} alt="new" class="center" />
+                      <Card.Title as="div" class="nobox">
                         <strong>{product.name}</strong>
                       </Card.Title>
-                      <Card.Text as = "h3" class = "nobox">
+                      <Card.Text as="h3" class="nobox">
                         {product.price}
                       </Card.Text>
                     </Link>

@@ -21,7 +21,7 @@ function Fitness() {
   const dispatch = useDispatch();
   const fitnessProductsList = useSelector((state) => state.categoryProducts);
   const { load, error, categoryProducts } = fitnessProductsList;
-  
+
   const params = useParams();
 
   useEffect(() => {

@@ -9,19 +9,18 @@ import {
   Route,
   HashRouter as Router,
 } from "react-router-dom";
-import { savePaymentMethod }  from '../../actions/cartActions'
+import { savePaymentMethod } from "../../actions/cartActions";
 
 function PaymentPage() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const shoppingCart = useSelector((state) => state.shoppingCart);
 
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const shoppingCart = useSelector(state => state.shoppingCart)
-
-  const { shippingAddress } = shoppingCart
+  const { shippingAddress } = shoppingCart;
   const [paymentMethod, setPaymentMethod] = useState();
 
-  if (!shippingAddress.address){
-    navigate('/shipping')
+  if (!shippingAddress.address) {
+    navigate("/shipping");
   }
 
   const [cc_num, setCCNum] = useState("");
@@ -31,8 +30,8 @@ function PaymentPage() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(savePaymentMethod(paymentMethod))
-    navigate('/ordersummary')
+    dispatch(savePaymentMethod(paymentMethod));
+    navigate("/ordersummary");
   };
 
   return (
@@ -40,20 +39,33 @@ function PaymentPage() {
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
 
       <Form onSubmit={submitHandler}>
-        
-      <Form.Group>
+        <Form.Group>
           <Form.Label as="legend">Credit Card Type:</Form.Label>
           <div className="radio">
-            <label><input name="cctype" type ="radio" value="Visa" onChange={(e) => setPaymentMethod(e.target.value)} required></input>Visa</label>
+            <label>
+              <input
+                name="cctype"
+                type="radio"
+                value="Visa"
+                onChange={(e) => setPaymentMethod(e.target.value)}
+                required
+              ></input>
+              Visa
+            </label>
           </div>
-         
+
           <div className="radio">
-            <label><input name="cctype" type ="radio" value="MasterCard" onChange={(e) => setPaymentMethod(e.target.value)}></input>MasterCard</label>
+            <label>
+              <input
+                name="cctype"
+                type="radio"
+                value="MasterCard"
+                onChange={(e) => setPaymentMethod(e.target.value)}
+              ></input>
+              MasterCard
+            </label>
           </div>
-  
-      </Form.Group>
-
-
+        </Form.Group>
 
         <Form.Group>
           <Form.Label as="legend">Credit Card Number:</Form.Label>
@@ -104,11 +116,7 @@ function PaymentPage() {
           ></Form.Control>
         </Form.Group>
 
-        <Button
-          type="submit"
-          variant="primary"
-          id="btttn"
-        >
+        <Button type="submit" variant="primary" id="btttn">
           Continue
         </Button>
       </Form>
