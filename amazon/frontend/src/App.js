@@ -13,10 +13,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DetailedProductpage from "./components/pages/DetailedProductpage/DetailedProductpage.js";
 import CartPage from "./components/pages/CartPage/CartPage.js";
 import LoginPage from "./components/pages/LoginPage.js";
-import Products from "./components/pages/Products";
+import SearchBarDisplay from "./components/pages/SearchBarDisplay";
 import ShippingPage from "./components/pages/ShippingPage";
 import PaymentPage from "./components/pages/PaymentPage";
 import OrderSummaryPage from "./components/pages/OrderSummaryPage";
+import OrderConfirmationPage from "./components/pages/OrderConfirmationPage";
 import Footer from "./components/Footer.js";
 
 function App() {
@@ -32,14 +33,15 @@ function App() {
           <Route path="/:Entertainment" exact element={<Entertainment />} />
           <Route path="/:Fitness" exact element={<Fitness />} />
           <Route path="/" exact element={<HomePage />} />
-          <Route path="/Search" exact element={<Products />} />
+          <Route path="/Search" exact element={<SearchBarDisplay />} />
           <Route path="/product/:id" element={<DetailedProductpage />} />
           <Route path="/shipping" element={<ShippingPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/ordersummary" element={<OrderSummaryPage />} />
+          <Route path="/orderconfirmation" element={<OrderConfirmationPage />} />
           <Route path="/cart/:id">
-            <Route path="" element={<CartPage />} />
+          <Route path="" element={<CartPage />} />
           </Route>
         </Routes>
 

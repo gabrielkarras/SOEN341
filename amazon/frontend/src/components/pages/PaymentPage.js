@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Form, Button, Col } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../FormContainer.js";
 import CheckoutSteps from "../CheckoutSteps.js";
 import {
   useNavigate,
-  Routes,
-  Route,
   HashRouter as Router,
 } from "react-router-dom";
 import { savePaymentMethod } from "../../actions/cartActions";
 
 function PaymentPage() {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const shoppingCart = useSelector((state) => state.shoppingCart);
@@ -36,7 +35,7 @@ function PaymentPage() {
 
   return (
     <FormContainer>
-      <CheckoutSteps step1 step2 step3></CheckoutSteps>
+      <CheckoutSteps step1 step2 ></CheckoutSteps>
 
       <Form onSubmit={submitHandler}>
         <Form.Group>

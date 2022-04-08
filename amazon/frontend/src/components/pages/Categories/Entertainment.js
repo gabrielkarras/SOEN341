@@ -4,13 +4,8 @@ import "../../../App.css";
 import {
   Row,
   Col,
-  ListGroup,
-  Button,
   Card,
-  ListGroupItem,
-  Form,
 } from "react-bootstrap";
-import Footer from "../../Footer";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { displayCategoryProducts } from "../../../actions/categoryActions";
@@ -50,7 +45,7 @@ function Entertainment() {
                 <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                   <Card className="Show">
                     <Link to={`/product/${product._id}`} className="linkStyle">
-                      <img src={product.imageSrc} alt="new" class="center" />
+                      <img src={product.imageSrc} alt="new" class="centerpic" />
                       <Card.Title as="div" class="nobox">
                         <strong>{product.name}</strong>
                       </Card.Title>
@@ -71,8 +66,3 @@ function Entertainment() {
 
 export default Entertainment;
 
-/*{entertainmentProducts.map((value, key) => {
-  if(value.category=="Entertainment"){
-  return <Link to={`/product/${value._id}`}>
-  <p >{value.name}</p> </Link>
-}})*/

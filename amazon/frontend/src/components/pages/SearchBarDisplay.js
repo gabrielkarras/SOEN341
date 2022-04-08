@@ -1,21 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../../App.css";
-import {
-  Row,
-  Col,
-  ListGroup,
-  Button,
-  Card,
-  ListGroupItem,
-  Form,
-} from "react-bootstrap";
-import Footer from "../Footer";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { displaySearch } from "../../actions/searchAction";
-import Loader from "../../components/Loader";
-import Message from "../../components/Message";
+import Loader from "../Loader";
+import Message from "../Message";
 import Searchbar from "./Searchbar";
 
 function Products() {

@@ -5,12 +5,8 @@ import {
   Row,
   Col,
   ListGroup,
-  Image,
-  Form,
   Button,
-  Card,
   ListGroupItem,
-  NavItem,
 } from "react-bootstrap";
 import "../../App.css";
 import Message from "../Message";
@@ -65,9 +61,8 @@ function OrderSummaryPage() {
 
   return (
     <div>
-      <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
-      <div className="center-order">
-        {/*(<CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps> */}
+      <CheckoutSteps step1 step2 step3></CheckoutSteps>
+      <div className="center-page">
         <Row>
           <ListGroup variant="flush">
             <ListGroupItem>

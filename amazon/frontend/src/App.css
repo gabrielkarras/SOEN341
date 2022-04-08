@@ -35,11 +35,12 @@
   box-shadow: none;
 }
 
-.center-order {
+.center-page {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 /* .services { */
 /*   background-image: url('/images/img-2.jpg'); */
 /*   background-position: center; */

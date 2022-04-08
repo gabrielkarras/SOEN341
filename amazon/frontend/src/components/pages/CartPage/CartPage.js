@@ -5,24 +5,24 @@ import {
   Row,
   Col,
   ListGroup,
-  Image,
   Form,
   Button,
   Card,
   ListGroupItem,
-  NavItem,
 } from "react-bootstrap";
 import Message from "../../../components/Message";
 import { addToCart, removeFromCart } from "../../../actions/cartActions";
-import DeleteIcon from "@material-ui/icons/Delete";
+import "../../../App.css"
 
 function CartPage() {
+
   const dispatch = useDispatch();
   const params = useParams();
   const productId = params.id;
   const location = useLocation();
-  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
   const navigate = useNavigate();
+
+  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
   const cart = useSelector((state) => state.shoppingCart);
   const { cartProducts } = cart;
 
@@ -41,6 +41,7 @@ function CartPage() {
   };
 
   return (
+    <div className = "center-page">
     <Row>
       <Col md={8}>
         <h1>Shopping Cart</h1>
@@ -124,6 +125,7 @@ function CartPage() {
         </Card>
       </Col>
     </Row>
+    </div>
   );
 }
 
