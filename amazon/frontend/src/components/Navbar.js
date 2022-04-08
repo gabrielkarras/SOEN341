@@ -44,39 +44,33 @@ function Navbar() {
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
-              <Link
-                to="/ShippingScreen.js"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
 
             <li className="nav-item">
               <Link
-                to="/Products"
+                to="/Search"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
-                Shop
+                Search
               </Link>
             </li>
 
             <li>
               <Link
-                to="/sign-up"
+                to="/login"
                 className="nav-links-mobile"
                 onClick={closeMobileMenu}
               >
-                Log In / Sign Up
+                Log In
               </Link>
             </li>
           </ul>
 
-          {button && (
-            <Button buttonStyle="btn--outline">LOG IN / SIGN UP</Button>
-          )}
+          {button && <Button buttonStyle="btn--outline">LOG IN</Button>}
         </div>
       </nav>
     </>

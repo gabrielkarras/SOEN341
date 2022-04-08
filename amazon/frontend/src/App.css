@@ -17,18 +17,30 @@
 }
 
 .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .Show:hover {
   background-color: #fff;
   color: white;
 }
+.centerpic {
+  float: left;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
 .nobox {
   box-shadow: none;
 }
+
+.center-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* .services { */
 /*   background-image: url('/images/img-2.jpg'); */
 /*   background-position: center; */

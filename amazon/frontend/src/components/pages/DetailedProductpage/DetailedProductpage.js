@@ -10,10 +10,10 @@ import {
   ListGroupItem,
   Form,
 } from "react-bootstrap";
-import Footer from "../../Footer";
 import { displayDetailedProduct } from "../../../actions/productActions";
 import Loader from "../../../components/Loader";
 import Message from "../../../components/Message";
+import "../../../App.css";
 
 function DetailedProductPage() {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ function DetailedProductPage() {
 
   return (
     <>
-      <div>
+      <div className="center-page">
         {load ? (
           <Loader />
         ) : error ? (
@@ -45,7 +45,7 @@ function DetailedProductPage() {
               <img src={product.imageSrc} alt="new" />
             </Col>
             <Col md={3}>
-              <ListGroup variant="flush">
+              <ListGroup variant>
                 <ListGroupItem>
                   <h2>{product.name}</h2>
                 </ListGroupItem>
@@ -61,7 +61,7 @@ function DetailedProductPage() {
             </Col>
             <Col md={3}>
               <Card>
-                <ListGroup variant="flush">
+                <ListGroup>
                   <ListGroupItem>
                     <Row>
                       <Col>Price:</Col>

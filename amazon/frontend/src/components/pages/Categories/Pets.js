@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "../../../App.css";
-import {
-  Row,
-  Col,
-  ListGroup,
-  Button,
-  Card,
-  ListGroupItem,
-  Form,
-} from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import Footer from "../../Footer";
 import { Link } from "react-router-dom";
-import Product from "../../Product";
 import { useDispatch, useSelector } from "react-redux";
 import { displayCategoryProducts } from "../../../actions/categoryActions";
 import Loader from "../../Loader";
@@ -29,6 +20,12 @@ function Pets() {
     dispatch(displayCategoryProducts(params.Pets));
   }, [dispatch, params.Pets]);
 
+  const linkStyle = {
+    margin: "1rem",
+    textDecoration: "none",
+    color: "black",
+  };
+
   return (
     <>
       <div>
@@ -41,7 +38,26 @@ function Pets() {
             <Row>
               {categoryProducts.map((product) => (
                 <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
+                  <Card className="Show">
+                    <Link
+                      to={`/product/${product._id}`}
+                      style={
+                        (linkStyle = {
+                          margin: "1rem",
+                          textDecoration: "none",
+                          color: "black",
+                        })
+                      }
+                    >
+                      <img src={product.imageSrc} alt="new" class="center" />
+                      <Card.Title as="div" class="nobox">
+                        <strong>{product.name}</strong>
+                      </Card.Title>
+                      <Card.Text as="h3" class="nobox">
+                        {product.price}
+                      </Card.Text>
+                    </Link>
+                  </Card>
                 </Col>
               ))}
             </Row>

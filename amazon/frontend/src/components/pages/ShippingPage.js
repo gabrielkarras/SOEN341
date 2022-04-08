@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../FormContainer.js";
 import CheckoutSteps from "../CheckoutSteps.js";
-import {
-  useNavigate,
-  Routes,
-  Route,
-  HashRouter as Router,
-} from "react-router-dom";
+import { useNavigate, HashRouter as Router } from "react-router-dom";
+import { saveShippingAddress } from "../../actions/cartActions.js";
 
-function ShippingScreen(history) {
+function ShippingScreen() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const shoppingCart = useSelector((state) => state.shoppingCart);
+  const { shippingAddress } = shoppingCart;
 
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [country, setCountry] = useState("");
+  const [address, setAddress] = useState(shippingAddress.address);
+  const [city, setCity] = useState(shippingAddress.city);
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+  const [country, setCountry] = useState(shippingAddress.country);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("Form ");
+    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    navigate(`/payment`);
   };
 
   return (
     <FormContainer>
-      <CheckoutSteps step1 step2></CheckoutSteps>
+      <CheckoutSteps step1></CheckoutSteps>
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="address">
@@ -34,7 +34,7 @@ function ShippingScreen(history) {
             required
             type="text"
             placeholder="Enter address"
-            valie={address ? address : ""}
+            value={address ? address : ""}
             onChange={(e) => setAddress(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -45,7 +45,7 @@ function ShippingScreen(history) {
             required
             type="text"
             placeholder="Enter city"
-            valie={city ? city : ""}
+            value={city ? city : ""}
             onChange={(e) => setCity(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -56,7 +56,7 @@ function ShippingScreen(history) {
             required
             type="text"
             placeholder="Enter postal code"
-            valie={postalCode ? postalCode : ""}
+            value={postalCode ? postalCode : ""}
             onChange={(e) => setPostalCode(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -67,20 +67,11 @@ function ShippingScreen(history) {
             required
             type="text"
             placeholder="Enter country"
-            valie={country ? country : ""}
+            value={country ? country : ""}
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
-        {/* The form doesn't get submitted when the onClick action is present in the code below because it syas that the form is not connected.
-            If you remove the onClick action, the form gets submitted successfully.*/}
-
-        <Button
-          type="submit"
-          variant="primary"
-          id="btttn"
-          onClick={() => navigate("../Payments.js", {})}
-        >
+        <Button type="submit" variant="primary" id="btttn">
           Continue
         </Button>
       </Form>

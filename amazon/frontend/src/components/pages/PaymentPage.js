@@ -1,41 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { Form, Button, Col } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../FormContainer.js";
 import CheckoutSteps from "../CheckoutSteps.js";
-import {
-  useNavigate,
-  Routes,
-  Route,
-  HashRouter as Router,
-} from "react-router-dom";
-//import {savePaymentMethod} from '../actions/cartActions'
+import { useNavigate, HashRouter as Router } from "react-router-dom";
+import { savePaymentMethod } from "../../actions/cartActions";
 
-function Payments({ history }) {
-  {
-    /* ONCE CART IS CREATED AND SHIPPING ADDRESS IS SAVED:
-
-    const navigate = useNavigate()
-
-    const cart = useSelector(state => state.cart)
-
-    const {shippingAddress } = cart
-    const dispatch = useDispatch()
-
-
-
-    if (!shippingAddress.address){
-
-        navigate('../ShippingScreen.js', {  })
-
-    }
-
-    */
-  }
-
-  const [paymentMethod, setPaymentMethod] = useState("PayPal");
-
+function PaymentPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const shoppingCart = useSelector((state) => state.shoppingCart);
+
+  const { shippingAddress } = shoppingCart;
+  const [paymentMethod, setPaymentMethod] = useState();
+
+  if (!shippingAddress.address) {
+    navigate("/shipping");
+  }
 
   const [cc_num, setCCNum] = useState("");
   const [cc_name, setCCName] = useState("");
@@ -44,15 +25,42 @@ function Payments({ history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    //dispatchEvent(savePaymentMethod(paymentMethod))
-    //navigate('../PlaceOrder.js', {  })
+    dispatch(savePaymentMethod(paymentMethod));
+    navigate("/ordersummary");
   };
+
   return (
     <FormContainer>
-      <CheckoutSteps step1 step2 step3></CheckoutSteps>
+      <CheckoutSteps step1 step2></CheckoutSteps>
 
       <Form onSubmit={submitHandler}>
-        <h1>Accepted Payment Method: Credit Card</h1>
+        <Form.Group>
+          <Form.Label as="legend">Credit Card Type:</Form.Label>
+          <div className="radio">
+            <label>
+              <input
+                name="cctype"
+                type="radio"
+                value="Visa"
+                onChange={(e) => setPaymentMethod(e.target.value)}
+                required
+              ></input>
+              Visa
+            </label>
+          </div>
+
+          <div className="radio">
+            <label>
+              <input
+                name="cctype"
+                type="radio"
+                value="MasterCard"
+                onChange={(e) => setPaymentMethod(e.target.value)}
+              ></input>
+              MasterCard
+            </label>
+          </div>
+        </Form.Group>
 
         <Form.Group>
           <Form.Label as="legend">Credit Card Number:</Form.Label>
@@ -62,7 +70,7 @@ function Payments({ history }) {
             type="text"
             pattern="[0-9]*"
             placeholder="Enter credit card number"
-            valie={cc_num ? cc_num : ""}
+            value={cc_num ? cc_num : ""}
             onChange={(e) => setCCNum(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -74,7 +82,7 @@ function Payments({ history }) {
             required
             type="text"
             placeholder="Enter name on credit card"
-            valie={cc_name ? cc_name : ""}
+            value={cc_name ? cc_name : ""}
             onChange={(e) => setCCName(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -86,7 +94,7 @@ function Payments({ history }) {
             required
             type="text"
             placeholder="Enter credit card expiration date"
-            valie={cc_date ? cc_date : ""}
+            value={cc_date ? cc_date : ""}
             onChange={(e) => setCCDate(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -98,17 +106,12 @@ function Payments({ history }) {
             required
             type="text"
             placeholder="Enter credit card CVC"
-            valie={cc_cvc ? cc_cvc : ""}
+            value={cc_cvc ? cc_cvc : ""}
             onChange={(e) => setCCcvc(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
-        <Button
-          type="submit"
-          variant="primary"
-          id="btttn"
-          onClick={() => navigate("../OrderSummary.js", {})}
-        >
+        <Button type="submit" variant="primary" id="btttn">
           Continue
         </Button>
       </Form>
@@ -116,4 +119,4 @@ function Payments({ history }) {
   );
 }
 
-export default Payments;
+export default PaymentPage;
