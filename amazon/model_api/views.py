@@ -110,7 +110,7 @@ def getCategoryProducts(request, pk):
 def addOrderProducts(request):
     # client = request.client
     data = request.data
-    orderedProducts = data["orderItems"]
+    orderedProducts = data["orderProducts"]
 
     order = Order.objects.create(
         # client=client,

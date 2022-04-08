@@ -12,6 +12,7 @@ import {
   ListGroupItem,
   NavItem,
 } from "react-bootstrap";
+import "../../App.css"
 import Message from "../Message";
 import CheckoutSteps from "../CheckoutSteps.js";
 import { createOrderAction } from "../../actions/orderActions";
@@ -52,7 +53,9 @@ function OrderSummaryPage() {
   
   return (
     <div>
-      <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
+    <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps> 
+    <div className="center-order">
+      {/*(<CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps> */}
       <Row>
         <ListGroup variant="flush">
           <ListGroupItem>
@@ -142,6 +145,7 @@ function OrderSummaryPage() {
           </ListGroup>
         </ListGroup>
       </Row>
+    </div>
     </div>
   )
 }

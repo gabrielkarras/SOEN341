@@ -29,6 +29,12 @@
 .nobox {
   box-shadow: none;
 }
+
+.center-order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* .services { */
 /*   background-image: url('/images/img-2.jpg'); */
 /*   background-position: center; */
