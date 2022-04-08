@@ -155,17 +155,3 @@ class RegistartionTestCase(APITestCase):
         }
         response = self.client.post("auth/register/", data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-
-# class ProfileViewSetTestCase(APITestCase):
-#
-#    def api_authentication(self):
-#        self.client.credentials(HTTP_AUTHORIZATION="Token " + self.token)
-#
-#    def setUp(self):
-#        self.user = User.objects.create_user(
-#            username="test_user",
-#            password="test_pass")
-#
-#        self.token = Token.objects.create(user=self.user)
-#        self.api_authentication()

@@ -31,6 +31,7 @@ function App() {
           <Route path="/:Entertainment" exact element={<Entertainment />} />
           <Route path="/:Fitness" exact element={<Fitness />} />
           <Route path="/" exact element={<HomePage />} />
+          <Route path="/Search" exact element={<Products />} />
           <Route path="/product/:id" element={<DetailedProductpage />} />
           <Route path="/shipping" element={<ShippingPage />} />
           <Route path="/payment" element={<PaymentPage />} />

@@ -5,15 +5,16 @@ import { detailedProductReducer } from "./reducers/detailedProductReducers";
 import { cartReducers } from "./reducers/cartReducers";
 import { categoryReducers } from "./reducers/categoryReducers";
 import {
-    userLoginReducer,
-    userRegisterReducer,
-    userDetailsReducer,
-    userUpdateProfileReducer,
-    userListReducer,
-    userDeleteReducer,
-    userUpdateReducer,
-} from './reducers/userReducers'
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
+  userListReducer,
+  userDeleteReducer,
+  userUpdateReducer,
+} from "./reducers/userReducers";
 import { createOrderReducer } from "./reducers/orderReducers";
+import { searchbarReducers } from "./reducers/searchbarReducers";
 
 const reducer = combineReducers({
   detailedProduct: detailedProductReducer,
@@ -27,6 +28,7 @@ const reducer = combineReducers({
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
   createOrder: createOrderReducer,
+  Searchproduct: searchbarReducers,
 });
 
 const shoppingCartStorage = localStorage.getItem("shoppingCart")
